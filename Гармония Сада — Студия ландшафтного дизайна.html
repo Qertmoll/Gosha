@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гармония Сада — Студия ландшафтного дизайна и архитектуры</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#14382a',
+                            900: '#1b4332',
+                            800: '#2d6a4f',
+                            700: '#40916c',
+                            600: '#52b788',
+                            500: '#74c69d',
+                            100: '#d8f3dc',
+                            50: '#f0fdf4',
+                        },
+                        earth: {
+                            sand: '#e9ecef',
+                            accent: '#d4a373',
+                            accentHover: '#bc8a5f',
+                            warmBg: '#fefae0',
+                            lightGray: '#f8f9fa'
+                        },
+                        darkSlate: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(27, 67, 50, 0.75) 0%, rgba(20, 56, 42, 0.85) 100%);
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(27, 67, 50, 0.08);
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(27, 67, 50, 0.15);
+        }
+        /* Before/After Slider Effect */
+        .ba-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .ba-after {
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+        .ba-after img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            max-width: none;
+        }
+    </style>
+</head>
+<body class="font-body text-darkSlate bg-earth-lightGray antialiased selection:bg-emerald-800 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-emerald-900/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-900 flex items-center justify-center text-emerald-100 group-hover:bg-emerald-800 transition-colors shadow-md">
+                        <i data-lucide="sprout" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-sans text-xl font-bold tracking-tight text-emerald-900 block leading-tight">Гармония Сада</span>
+                        <span class="text-[10px] tracking-widest uppercase font-semibold text-emerald-700 block">Ландшафтная студия</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8 font-sans text-sm font-medium">
+                    <a href="#about" class="text-gray-700 hover:text-emerald-800 transition-colors">О нас</a>
+                    <a href="#services" class="text-gray-700 hover:text-emerald-800 transition-colors">Услуги</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-emerald-800 transition-colors">Портфолио</a>
+                    <a href="#process" class="text-gray-700 hover:text-emerald-800 transition-colors">Этапы работы</a>
+                    <a href="#calculator" class="text-gray-700 hover:text-emerald-800 transition-colors">Калькулятор</a>
+                    <a href="#contacts" class="text-gray-700 hover:text-emerald-800 transition-colors">Контакты</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden lg:flex items-center gap-5">
+                    <a href="tel:+78005553535" class="flex items-center gap-2 text-sm font-semibold text-emerald-900 hover:text-emerald-700 transition-colors">
+                        <i data-lucide="phone-call" class="w-4 h-4 text-emerald-800"></i>
+                        +7 (800) 555-35-35
+                    </a>
+                    <a href="#contacts" class="bg-emerald-900 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-xl font-sans text-sm font-medium transition-all duration-200 shadow-md shadow-emerald-900/20 active:scale-95">
+                        Заказать консультацию
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-emerald-900 hover:bg-emerald-50 transition-colors" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-4 font-sans">
+            <a href="#about" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">О нас</a>
+            <a href="#services" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">Услуги</a>
+            <a href="#portfolio" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">Портфолио</a>
+            <a href="#process" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">Этапы работы</a>
+            <a href="#calculator" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">Рассчитать стоимость</a>
+            <a href="#contacts" class="mobile-link block py-2 text-base font-medium text-gray-800 hover:text-emerald-800">Контакты</a>
+            <div class="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                <a href="tel:+78005553535" class="flex items-center gap-2 text-base font-semibold text-emerald-900">
+                    <i data-lucide="phone-call" class="w-5 h-5 text-emerald-800"></i>
+                    +7 (800) 555-35-35
+                </a>
+                <a href="#contacts" class="mobile-link w-full text-center bg-emerald-900 text-white py-3 rounded-xl font-medium">
+                    Заказать консультацию
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden bg-emerald-950">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&q=80&w=2000" 
+                 alt="Премиальный ландшафтный дизайн" 
+                 class="w-full h-full object-cover opacity-45 transform scale-105 transition-transform duration-10000 hover:scale-100"
+                 onerror="this.src='https://placehold.co/1920x1080/1b4332/ffffff?text=Ландшафтный+Дизайн'">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-8 space-y-8">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 bg-emerald-800/60 backdrop-blur-md border border-emerald-500/30 px-4 py-2 rounded-full text-emerald-100 text-xs sm:text-sm font-sans tracking-wide">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+                        <span>Архитектура, благоустройство и озеленение премиум-класса</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                        Превращаем ваш участок в <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-emerald-400 to-earth-accent">гармоничное пространство</span> для жизни и отдыха
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-lg sm:text-xl text-emerald-100/90 font-light max-w-2xl leading-relaxed">
+                        Полный цикл ландшафтного дизайна: от концептуального 3D-эскиза и мощения до авторского озеленения, автополива и подсветки.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                        <a href="#calculator" class="bg-earth-accent hover:bg-earth-accentHover text-white px-8 py-4 rounded-xl font-sans font-semibold text-center transition-all shadow-lg shadow-earth-accent/20 hover:shadow-earth-accent/40 flex items-center justify-center gap-3 group">
+                            <span>Рассчитать стоимость проекта</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#portfolio" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-sans font-medium text-center transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                            <span>Смотреть портфолио</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Metrics -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-emerald-800/60">
+                        <div class="space-y-1">
+                            <div class="font-sans text-3xl font-extrabold text-emerald-300">10+ лет</div>
+                            <div class="text-xs text-emerald-200/70">Опыта реализации проектов</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-sans text-3xl font-extrabold text-emerald-300">180+</div>
+                            <div class="text-xs text-emerald-200/70">Созданных уникальных садов</div>
+                        </div>
+                        <div class="space-y-1 col-span-2 sm:col-span-1">
+                            <div class="font-sans text-3xl font-extrabold text-emerald-300">2 года</div>
+                            <div class="text-xs text-emerald-200/70">Гарантии на растения и работы</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Quick Consultation Card -->
+                <div class="lg:col-span-4 hidden lg:block">
+                    <div class="bg-white/95 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-darkSlate shadow-2xl border border-white/40 space-y-5">
+                        <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-sans font-bold text-gray-900">Запись на замер</h3>
+                                <p class="text-xs text-gray-500">Бесплатный выезд архитектора</p>
+                            </div>
+                        </div>
+                        
+                        <form onsubmit="handleQuickSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Ваше имя</label>
+                                <input type="text" required placeholder="Александр" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 focus:bg-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Номер телефона</label>
+                                <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 focus:bg-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Район / Локация</label>
+                                <input type="text" placeholder="Например, Завидово" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 focus:bg-white text-sm">
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-800 text-white font-sans font-semibold py-3.5 rounded-xl text-sm transition-all shadow-md">
+                                Забронировать выезд
+                            </button>
+                            <p class="text-[11px] text-gray-400 text-center">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US / ADVANTAGES -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Преимущества</span>
+                <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900">Почему доверить сад стоит команде «Гармония Сада»</h2>
+                <p class="text-gray-600 text-base">Мы берем на себя все этапы благоустройства — от концептуальной геологии участка до ежедневного ухода за зелеными насаждениями.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Advantage 1 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 hover-lift space-y-4 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Фиксированная смета</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Никаких скрытых платежей и внезапных подорожаний. Все расходы прописаны в договоре и неизменны до сдачи объекта.
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 hover-lift space-y-4 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="box" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">3D-прогулка по саду</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        До начала земляных работ вы увидите, как сад будет выглядеть через 5–10 лет в разное время года и суток.
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 hover-lift space-y-4 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaf" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Питомники Европы и РФ</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Поставляем только акклиматизированный крупномерный материал с гарантийной приживаемостью от 24 месяцев.
+                    </p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 hover-lift space-y-4 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="wrench" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Собственная инженерия</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Проектируем и монтируем системы автополива, ливневки и архитектурной подсветки без привлечения сторонних субподрядчиков.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-earth-lightGray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Услуги</span>
+                <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900">Полный спектр ландшафтных работ</h2>
+                <p class="text-gray-600 text-base">Реализуем проекты любой сложности: от уютных приватных патио до масштабных загородных поместий со сложным рельефом.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Проектирование" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="compass" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Ландшафтное проектирование</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Разработка генерального плана, дендроплана, 3D-визуализации, чертежей мощения и рабочей документации.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Эскизное и рабочее проектирование</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Фотореалистичная 3D-визуализация</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Баланс территорий и ведомость объемов</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать проект</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800" alt="Озеленение" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="trees" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Озеленение и рулонный газон</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Посадка крупномеров, декоративных кустарников, создание альпинариев, рокариев и посевной/рулонный газон.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Укладка премиального газона</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Посадка взрослых деревьев (крупномеры)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Устройство миксбордеров и клумб</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать озеленение</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Инженерные системы" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="droplets" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Автополив и Дренаж</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Проектирование и монтаж интеллектуальных систем полива Rain Bird/Hunter и надежных дренажных сетей.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Автоматический полив с датчиками дождя</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Глубинный и поверхностный дренаж</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Ливневая канализация</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать системы</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=800" alt="Освещение" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="sun-medium" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Ландшафтное освещение</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Создание атмосферной вечерней подсветки деревьев, дорожек, водоемов и архитектурных элементов дома.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Безопасное напряжение 12V / 24V</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Умное управление со смартфона</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Акцентная подсветка кроны</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать освещение</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a81?auto=format&fit=crop&q=80&w=800" alt="Мощение" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="layers" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Мощение и Малые Формы</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Укладка брусчатки, клинкера, натурального камня. Возведение подпорных стен, пергол и кострищ.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Устройство пешеходных и авто-зон</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Подпорные стены из гранита и бетона</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Зоны барбекю и патио</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать мощение</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow hover-lift flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800" alt="Уход за садом" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-emerald-900/80 backdrop-blur-md text-white p-2 rounded-xl">
+                                <i data-lucide="flower-2" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-sans font-bold text-xl text-gray-900">Сервисный уход за садом</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Сезонное обслуживание садов: стрижка газона, топиарная обрезка, внесение удобрений, консервация полива.</p>
+                            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 font-medium">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Комплексный абонентский уход</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Подготовка сада к зиме/весне</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-700"></i> Лечение и защита растений</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contacts" class="block text-center py-2.5 px-4 bg-emerald-50 hover:bg-emerald-900 text-emerald-900 hover:text-white font-semibold text-sm rounded-xl transition-colors">Заказать уход</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Портфолио</span>
+                    <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900 mt-3">Реализованные объекты</h2>
+                </div>
+                
+                <!-- Portfolio Filter Buttons -->
+                <div class="flex flex-wrap gap-2 font-sans text-xs sm:text-sm">
+                    <button onclick="filterPortfolio('all')" class="portfolio-btn active bg-emerald-900 text-white px-4 py-2 rounded-xl transition-colors" data-filter="all">Все объекты</button>
+                    <button onclick="filterPortfolio('private')" class="portfolio-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 rounded-xl transition-colors" data-filter="private">Частные резиденции</button>
+                    <button onclick="filterPortfolio('relief')" class="portfolio-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 rounded-xl transition-colors" data-filter="relief">Сложный рельеф</button>
+                    <button onclick="filterPortfolio('commercial')" class="portfolio-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 rounded-xl transition-colors" data-filter="commercial">Коммерческие</button>
+                </div>
+            </div>
+
+            <!-- Before / After Feature Showcase -->
+            <div class="mb-16 bg-earth-warmBg rounded-3xl p-6 sm:p-10 border border-earth-accent/20">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="inline-block text-xs font-bold uppercase tracking-wider text-earth-accent bg-white px-3 py-1 rounded-md shadow-sm">До и После Преображения</span>
+                        <h3 class="font-sans text-2xl sm:text-3xl font-bold text-gray-900">Загородный дом в КП «Сосновый Бор»</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Участок 25 соток со сложным уклоном. Выполнен полный комплекс работ: террасирование гранитными подпорными стенами, автополив, видовой водоем и крупномеры хвойных пород.
+                        </p>
+                        <div class="flex items-center gap-6 pt-2 text-xs font-semibold text-gray-500">
+                            <div>Площадь: <span class="text-gray-900">25 соток</span></div>
+                            <div>Срок работ: <span class="text-gray-900">3.5 месяца</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Before/After Image Slider -->
+                    <div class="lg:col-span-7">
+                        <div class="ba-container rounded-2xl overflow-hidden shadow-xl aspect-video border-4 border-white cursor-ew-resize" id="baSlider">
+                            <!-- Before Image (Base) -->
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000" alt="До благоустройства" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-black/60 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm z-10">ДО</span>
+                            
+                            <!-- After Image (Overlay clipped) -->
+                            <div class="ba-after" id="baAfter">
+                                <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&q=80&w=1000" alt="После благоустройства" class="object-cover" id="baAfterImg">
+                                <span class="absolute top-4 right-4 bg-emerald-900/80 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm z-10">ПОСЛЕ</span>
+                            </div>
+
+                            <!-- Slider Handle -->
+                            <div class="absolute top-0 bottom-0 w-1 bg-white shadow-2xl cursor-ew-resize z-20" id="baHandle" style="left: 50%;">
+                                <div class="w-8 h-8 rounded-full bg-white text-emerald-900 shadow-md absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center">
+                                    <i data-lucide="chevrons-left-right" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-xs text-gray-400 mt-2">Потяните бегунок влево или вправо, чтобы сравнить</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+                <!-- Item 1 -->
+                <div class="portfolio-item private bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow group">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a81?auto=format&fit=crop&q=80&w=800" alt="Современный сад" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-emerald-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                            <button onclick="openModal('Современный сад в стиле минимализм', 'Частная резиденция в Новогорске, 18 соток. Лаконичные формы, геопластика и вечерняя подсветка.', 'https://images.unsplash.com/photo-1592417817098-8f3d6ef23a81?auto=format&fit=crop&q=80&w=1200')" class="p-3 bg-white text-emerald-900 rounded-full hover:bg-emerald-100 transition-colors">
+                                <i data-lucide="maximize-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Частный участок</span>
+                        <h4 class="font-sans font-bold text-lg text-gray-900 mt-1">Минималистичный сад в Новогорске</h4>
+                        <p class="text-xs text-gray-500 mt-1">Геопластика, газон, автополив, светодиодные ленты</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="portfolio-item relief bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow group">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800" alt="Участок на склоне" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-emerald-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                            <button onclick="openModal('Альпийский рельеф и подпорные стены', 'Участок на склоне 30 соток. Каскадный водопад, террасы из сланца.', 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=1200')" class="p-3 bg-white text-emerald-900 rounded-full hover:bg-emerald-100 transition-colors">
+                                <i data-lucide="maximize-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Сложный рельеф</span>
+                        <h4 class="font-sans font-bold text-lg text-gray-900 mt-1">Террасирование в Рублево</h4>
+                        <p class="text-xs text-gray-500 mt-1">Каскадный ручей, террасы, хвойный садик</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="portfolio-item commercial bg-white rounded-2xl overflow-hidden border border-gray-100 custom-shadow group">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800" alt="Отель Парк" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-emerald-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                            <button onclick="openModal('Парковая зона бутикового отеля', 'Благоустройство территории бутик-отеля 1.2 Га. Прогулочные аллеи и зоны отдыха.', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=1200')" class="p-3 bg-white text-emerald-900 rounded-full hover:bg-emerald-100 transition-colors">
+                                <i data-lucide="maximize-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Коммерческий объект</span>
+                        <h4 class="font-sans font-bold text-lg text-gray-900 mt-1">Парк-отель «Green Resort»</h4>
+                        <p class="text-xs text-gray-500 mt-1">Клинкерное мощение, фонтаны, крупномеры</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK PROCESS SECTION -->
+    <section id="process" class="py-20 bg-earth-lightGray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Этапы работы</span>
+                <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900">Прозрачный путь к саду вашей мечты</h2>
+                <p class="text-gray-600 text-base">Мы строго соблюдаем технологии и графики строительства, информируя вас на каждом этапе.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 font-sans font-extrabold text-xl flex items-center justify-center">
+                        01
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Выезд и Анализ</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Архитектор приезжает на участок, проводит топосъемку, анализ почвы, инсоляции и замеряет существующие деревья.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 font-sans font-extrabold text-xl flex items-center justify-center">
+                        02
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">3D-Концепция</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Создаем генеральный план, стилевые эскизы и 3D-визуализацию. Подбираем ассортимент растений и материалы.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 font-sans font-extrabold text-xl flex items-center justify-center">
+                        03
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Смета и Договор</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Согласовываем детализированную смету, рабочий календарный график реализиации и подписываем официальный договор.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-900 text-white font-sans font-extrabold text-xl flex items-center justify-center">
+                        04
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Реализация и Сдача</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Выполняем земляные, инженерные и посадочные работы. Передаем объект с гарантией и паспортом ухода за садом.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COST CALCULATOR / QUIZ SECTION -->
+    <section id="calculator" class="py-20 bg-emerald-900 text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center space-y-4 mb-12">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-200 bg-emerald-800/80 px-3 py-1 rounded-full">Онлайн Калькулятор</span>
+                <h2 class="font-sans text-3xl sm:text-4xl font-bold">Рассчитайте ориентировочную стоимость проекта</h2>
+                <p class="text-emerald-100 text-sm sm:text-base max-w-2xl mx-auto">Ответьте на 3 простых вопроса и получите предварительный расчет сметы и подборку референсов.</p>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="bg-white text-darkSlate rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8" id="quizContainer">
+                
+                <!-- Step 1: Area -->
+                <div class="quiz-step space-y-6" id="quizStep1">
+                    <div class="flex items-center justify-between border-b pb-4">
+                        <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Шаг 1 из 3</span>
+                        <span class="text-xs text-gray-400">Площадь участка</span>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Какова площадь вашего участка?</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <label class="quiz-option cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all text-center">
+                            <input type="radio" name="area" value="до 10 соток" class="hidden" onchange="selectQuizOption(this)">
+                            <div class="font-sans font-bold text-lg text-emerald-900">До 10</div>
+                            <div class="text-xs text-gray-500">соток</div>
+                        </label>
+                        <label class="quiz-option cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all text-center">
+                            <input type="radio" name="area" value="10 - 20 соток" class="hidden" onchange="selectQuizOption(this)">
+                            <div class="font-sans font-bold text-lg text-emerald-900">10 – 20</div>
+                            <div class="text-xs text-gray-500">соток</div>
+                        </label>
+                        <label class="quiz-option cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all text-center">
+                            <input type="radio" name="area" value="20 - 40 соток" class="hidden" onchange="selectQuizOption(this)">
+                            <div class="font-sans font-bold text-lg text-emerald-900">20 – 40</div>
+                            <div class="text-xs text-gray-500">соток</div>
+                        </label>
+                        <label class="quiz-option cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all text-center">
+                            <input type="radio" name="area" value="более 40 соток" class="hidden" onchange="selectQuizOption(this)">
+                            <div class="font-sans font-bold text-lg text-emerald-900">40+</div>
+                            <div class="text-xs text-gray-500">соток</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2: Services Needed -->
+                <div class="quiz-step hidden space-y-6" id="quizStep2">
+                    <div class="flex items-center justify-between border-b pb-4">
+                        <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Шаг 2 из 3</span>
+                        <span class="text-xs text-gray-400">Требуемые услуги</span>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Что необходимо выполнить на участке?</h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <label class="quiz-checkbox cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all flex items-center gap-3">
+                            <input type="checkbox" name="services" value="Ландшафтный проект 3D" class="w-5 h-5 accent-emerald-800">
+                            <span class="font-medium text-sm text-gray-800">Проект & 3D Визуализация</span>
+                        </label>
+                        <label class="quiz-checkbox cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all flex items-center gap-3">
+                            <input type="checkbox" name="services" value="Рулонный газон и Крупномеры" class="w-5 h-5 accent-emerald-800">
+                            <span class="font-medium text-sm text-gray-800">Озеленение и Газон</span>
+                        </label>
+                        <label class="quiz-checkbox cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all flex items-center gap-3">
+                            <input type="checkbox" name="services" value="Система автополива и дренаж" class="w-5 h-5 accent-emerald-800">
+                            <span class="font-medium text-sm text-gray-800">Автополив и Дренаж</span>
+                        </label>
+                        <label class="quiz-checkbox cursor-pointer p-4 rounded-xl border-2 border-gray-200 hover:border-emerald-800 transition-all flex items-center gap-3">
+                            <input type="checkbox" name="services" value="Мощение и Освещение" class="w-5 h-5 accent-emerald-800">
+                            <span class="font-medium text-sm text-gray-800">Мощение дорожек и Подсветка</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3: Contact Details -->
+                <div class="quiz-step hidden space-y-6" id="quizStep3">
+                    <div class="flex items-center justify-between border-b pb-4">
+                        <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Шаг 3 из 3</span>
+                        <span class="text-xs text-gray-400">Получение расчета</span>
+                    </div>
+                    <h3 class="font-sans font-bold text-xl text-gray-900">Куда отправить детальную смету?</h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Ваше имя</label>
+                            <input type="text" id="quizName" required placeholder="Елена" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Телефон / WhatsApp</label>
+                            <input type="tel" id="quizPhone" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Controls -->
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <button id="quizPrevBtn" onclick="prevQuizStep()" class="hidden px-6 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-800 transition-colors">
+                        Назад
+                    </button>
+                    <button id="quizNextBtn" onclick="nextQuizStep()" class="ml-auto bg-emerald-900 hover:bg-emerald-800 text-white font-sans font-semibold px-8 py-3 rounded-xl text-sm transition-all shadow-md">
+                        Далее
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Отзывы</span>
+                <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900">Впечатления владельцев садов</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            «Обратились к "Гармонии Сада" после неудачного опыта с другой бригадой. Команда полностью переделала дренаж и уложила прекрасный газон. Прошло 2 года — сад выглядит великолепно!»
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200/60">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Мария В." class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-sans font-bold text-sm text-gray-900">Мария Воронова</div>
+                            <div class="text-xs text-gray-500">КП «Новая Рига», 20 соток</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            «Главное для меня — прозрачность расходов. Смета была утверждена заранее и не выросла ни на рубль. Особый восторг вызывает вечерняя подсветка деревьев!»
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200/60">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Игорь К." class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-sans font-bold text-sm text-gray-900">Игорь Ковалев</div>
+                            <div class="text-xs text-gray-500">КП «Барвиха», 35 соток</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-8 rounded-2xl bg-earth-lightGray border border-gray-100 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            «Профессионалы высочайшего уровня. Подсказали, какие растения приживутся в тенистом участке, сделали автономный полив, за которым вообще не нужно следить.»
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200/60">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Елена С." class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-sans font-bold text-sm text-gray-900">Елена Соколова</div>
+                            <div class="text-xs text-gray-500">Завидово, 15 соток</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS SECTION -->
+    <section id="contacts" class="py-20 bg-earth-lightGray border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Side -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Контакты</span>
+                        <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900 mt-3">Обсудим ваш будущий сад?</h2>
+                        <p class="text-gray-600 text-sm mt-2">Свяжитесь с нами удобным способом или закажите бесплатный выезд ландшафтного архитектора.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-gray-500 uppercase">Телефон</div>
+                                <a href="tel:+78005553535" class="font-sans text-lg font-bold text-gray-900 hover:text-emerald-800 transition-colors">+7 (800) 555-35-35</a>
+                                <p class="text-xs text-gray-400">Ежедневно с 09:00 до 21:00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-gray-500 uppercase">Электронная почта</div>
+                                <a href="mailto:info@garmoniya-sada.ru" class="font-sans text-lg font-bold text-gray-900 hover:text-emerald-800 transition-colors">info@garmoniya-sada.ru</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-emerald-100 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-gray-500 uppercase">Главный Офис</div>
+                                <div class="font-sans text-base font-bold text-gray-900">г. Москва, Рублево-Успенское ш., д. 102, стр. 3</div>
+                                <p class="text-xs text-gray-400">Шоурум материалов и растений</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social / Messengers -->
+                    <div class="pt-4 border-t border-gray-200">
+                        <div class="text-xs font-semibold text-gray-500 uppercase mb-3">Быстрая связь в мессенджерах</div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800 text-white font-medium text-xs hover:bg-emerald-900 transition-colors">
+                                <i data-lucide="send" class="w-4 h-4"></i> Telegram
+                            </a>
+                            <a href="#" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-600 text-white font-medium text-xs hover:bg-green-700 transition-colors">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-100">
+                        <h3 class="font-sans font-bold text-2xl text-gray-900 mb-2">Оставить заявку на консультацию</h3>
+                        <p class="text-gray-500 text-sm mb-6">Заполните форму, и главный архитектор свяжется с вами в течение 15 минут.</p>
+                        
+                        <form onsubmit="handleMainSubmit(event)" class="space-y-5">
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Ваше имя *</label>
+                                    <input type="text" required placeholder="Алексей" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Номер телефона *</label>
+                                    <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Площадь участка и локация</label>
+                                <input type="text" placeholder="Например: 20 соток, Новая Рига" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Комментарий или пожелания</label>
+                                <textarea rows="4" placeholder="Расскажите о ваших предпочтениях или особенностях участка..." class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-800 text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-800 text-white font-sans font-bold py-4 rounded-xl text-base transition-all shadow-lg shadow-emerald-900/20">
+                                Отправить заявку
+                            </button>
+                            <p class="text-xs text-gray-400 text-center">Мы гарантируем конфиденциальность ваших персональных данных</p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-emerald-100 py-12 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-800 flex items-center justify-center text-emerald-100">
+                        <i data-lucide="sprout" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-sans text-xl font-bold tracking-tight text-white block leading-tight">Гармония Сада</span>
+                        <span class="text-[10px] tracking-widest uppercase font-semibold text-emerald-400 block">Ландшафтная студия</span>
+                    </div>
+                </div>
+
+                <!-- Footer Nav -->
+                <div class="flex flex-wrap justify-center gap-6 font-sans text-sm font-medium text-emerald-200">
+                    <a href="#about" class="hover:text-white transition-colors">О нас</a>
+                    <a href="#services" class="hover:text-white transition-colors">Услуги</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors">Портфолио</a>
+                    <a href="#process" class="hover:text-white transition-colors">Этапы</a>
+                    <a href="#calculator" class="hover:text-white transition-colors">Калькулятор</a>
+                    <a href="#contacts" class="hover:text-white transition-colors">Контакты</a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-emerald-900/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-400/80">
+                <div>© 2026 «Гармония Сада». Все права защищены.</div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Политика конфиденциальности</a>
+                    <a href="#" class="hover:underline">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PORTFOLIO MODAL POPUP -->
+    <div id="portfolioModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 bg-white/80 hover:bg-white rounded-full text-gray-800 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="modalImg" src="" alt="" class="w-full h-64 sm:h-80 object-cover">
+            <div class="p-6 sm:p-8 space-y-3">
+                <h3 id="modalTitle" class="font-sans font-bold text-2xl text-gray-900"></h3>
+                <p id="modalDesc" class="text-gray-600 text-sm leading-relaxed"></p>
+                <div class="pt-4">
+                    <a href="#contacts" onclick="closeModal()" class="inline-block bg-emerald-900 text-white font-sans font-semibold px-6 py-3 rounded-xl text-sm hover:bg-emerald-800 transition-colors">
+                        Хочу похожий проект
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-emerald-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+        <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400"></i>
+        <div>
+            <div class="font-sans font-bold text-sm" id="toastTitle">Спасибо за заявку!</div>
+            <div class="text-xs text-emerald-200" id="toastDesc">Наш архитектор свяжется с вами в течение 15 минут.</div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTIVITY -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Portfolio Category Filter
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.portfolio-btn');
+
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('bg-emerald-900', 'text-white');
+                    btn.classList.remove('bg-gray-100', 'text-gray-700');
+                } else {
+                    btn.classList.remove('bg-emerald-900', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-gray-700');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Before/After Interactive Drag Slider
+        const baSlider = document.getElementById('baSlider');
+        const baAfter = document.getElementById('baAfter');
+        const baAfterImg = document.getElementById('baAfterImg');
+        const baHandle = document.getElementById('baHandle');
+        let isDragging = false;
+
+        function syncSliderWidth() {
+            if (baSlider && baAfterImg) {
+                const rect = baSlider.getBoundingClientRect();
+                baAfterImg.style.width = `${rect.width}px`;
+            }
+        }
+
+        function updateSliderPosition(x) {
+            const rect = baSlider.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            if (position < 0) position = 0;
+            if (position > 100) position = 100;
+
+            baAfter.style.width = `${position}%`;
+            baHandle.style.left = `${position}%`;
+        }
+
+        window.addEventListener('resize', syncSliderWidth);
+        syncSliderWidth();
+
+        baSlider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSliderPosition(e.clientX);
+        });
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSliderPosition(e.clientX);
+        });
+
+        // Touch events for mobile
+        baSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            updateSliderPosition(e.touches[0].clientX);
+        });
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSliderPosition(e.touches[0].clientX);
+        });
+
+        // Quiz Step Logic
+        let currentQuizStep = 1;
+
+        function updateQuizUI() {
+            document.getElementById('quizStep1').classList.toggle('hidden', currentQuizStep !== 1);
+            document.getElementById('quizStep2').classList.toggle('hidden', currentQuizStep !== 2);
+            document.getElementById('quizStep3').classList.toggle('hidden', currentQuizStep !== 3);
+
+            document.getElementById('quizPrevBtn').classList.toggle('hidden', currentQuizStep === 1);
+            
+            const nextBtn = document.getElementById('quizNextBtn');
+            if (currentQuizStep === 3) {
+                nextBtn.innerText = 'Получить расчет';
+            } else {
+                nextBtn.innerText = 'Далее';
+            }
+        }
+
+        function selectQuizOption(radio) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('border-emerald-800', 'bg-emerald-50'));
+            radio.closest('.quiz-option').classList.add('border-emerald-800', 'bg-emerald-50');
+        }
+
+        function nextQuizStep() {
+            if (currentQuizStep < 3) {
+                currentQuizStep++;
+                updateQuizUI();
+            } else {
+                // Submit Quiz
+                showToast('Расчет отправлен!', 'Мы подберем смету и вышлем вам в WhatsApp.');
+                currentQuizStep = 1;
+                updateQuizUI();
+            }
+        }
+
+        function prevQuizStep() {
+            if (currentQuizStep > 1) {
+                currentQuizStep--;
+                updateQuizUI();
+            }
+        }
+
+        // Modal Logic
+        function openModal(title, desc, imgUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgUrl;
+            document.getElementById('portfolioModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('portfolioModal').classList.add('hidden');
+        }
+
+        // Notification Toast Handler
+        function showToast(title, desc) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastDesc').innerText = desc;
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        function handleQuickSubmit(e) {
+            e.preventDefault();
+            showToast('Заявка принята!', 'Наш архитектор свяжется с вами для уточнения деталей.');
+            e.target.reset();
+        }
+
+        function handleMainSubmit(e) {
+            e.preventDefault();
+            showToast('Спасибо за обращение!', 'Мы свяжемся с вами в течение 15 минут.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
